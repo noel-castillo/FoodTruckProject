@@ -3,30 +3,33 @@ package com.skilldistillery.foodtrucks;
 import java.util.Scanner;
 
 public class FoodTruck {
-	
+
 //	F I E L D S
-	
+
 	private FoodTruck[] foodTruck;
-	
+
 	private String name;
-	
+
 	private String foodType;
-	
+
 	private double rating;
-	
+
 	private int foodTruckNumber = 0;
-	
+
 	private int numberOfFoodTrucks = 5;
-	
+
 //	C O N S T R U C T O R S
-	
+
+	public FoodTruck() {
+	}
+
 	public FoodTruck(String name, String foodType, double rating) {
-		
+
 		foodTruck = new FoodTruck[numberOfFoodTrucks];
 	}
-	
+
 //	M E T H O D S
-	
+
 	public FoodTruck getFoodTruckInfo(Scanner keyboard) {
 		System.out.println("Enter food truck data or quit if done entering data.");
 		System.out.print("Food truck name:");
@@ -38,18 +41,27 @@ public class FoodTruck {
 		FoodTruck nextFoodTruck = new FoodTruck(name, foodType, rating);
 		return nextFoodTruck;
 	}
-	
+
 	public void addFoodTruck(FoodTruck nextFoodTruck) {
 		this.foodTruck[foodTruckNumber] = nextFoodTruck;
 		foodTruckNumber++;
 	}
-	
+
 	public FoodTruck[] getFoodTrucks() {
 		FoodTruck[] foodTruckCopy = new FoodTruck[numberOfFoodTrucks];
 		for (int c = 0; c < foodTruck.length; c++) {
 			foodTruckCopy[c] = foodTruck[c];
 		}
 		return foodTruckCopy;
+	}
+	
+	public int displayMenu(Scanner keyboard) {
+		System.out.println("1. List all existing food trucks.");
+		System.out.println("2. See the average rating of food trucks.");
+		System.out.println("3. Display the highest-rated food truck.");
+		System.out.println("4. Quit the program.");
+		int output = keyboard.nextInt();
+		return output;
 	}
 
 }
