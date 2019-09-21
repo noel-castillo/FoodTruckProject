@@ -9,6 +9,7 @@ public class FoodTruckApp {
 		Scanner keyboard = new Scanner(System.in);
 		String repeat = "";
 		FoodTruck app = new FoodTruck();
+		boolean proceed = true;
 		
 		do {
 			FoodTruck nextFoodTruck = app.getFoodTruckInfo(keyboard);
@@ -17,11 +18,11 @@ public class FoodTruckApp {
 			repeat = keyboard.next().toLowerCase();
 		} while(repeat.equals("r"));
 		
+		do {
 		int menuChoice = app.displayMenu(keyboard);
-		app.displayMenuChoice(menuChoice);
+		proceed = app.displayMenuChoice(menuChoice);
+		} while (proceed);
 		
-		app.viewAllFoodTruck();
-
 		keyboard.close();
 	}
 

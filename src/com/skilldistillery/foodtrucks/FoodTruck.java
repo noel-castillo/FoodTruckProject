@@ -71,11 +71,7 @@ public class FoodTruck {
 	}
 
 	public void addFoodTruck(FoodTruck nextFoodTruck) {
-		if(nextFoodTruck == null) {
-			this.foodTruck[foodTruckNumber] = null;
-		} else {
 		this.foodTruck[foodTruckNumber] = nextFoodTruck;
-		}
 		foodTruckNumber++;
 	}
 
@@ -87,7 +83,7 @@ public class FoodTruck {
 		return foodTruckCopy;
 	}
 	
-	public void viewAllFoodTruck() {
+	public void viewAllFoodTrucks() {
 		for (FoodTruck element : getFoodTrucks()) {
 			if (element != null) {
 				element.displayFoodTrucks();
@@ -114,27 +110,24 @@ public class FoodTruck {
 		return output;
 	}
 	
-	
-	
-	@Override
-	public String toString() {
-		return "FoodTruck [foodTruck=" + Arrays.toString(foodTruck) + ", name=" + name + ", foodType=" + foodType
-				+ ", rating=" + rating + ", foodTruckNumber=" + foodTruckNumber + "]";
-	}
-
-	public void displayMenuChoice(int menuChoice) {
+	public boolean displayMenuChoice(int menuChoice) {
+		boolean proceed = true;
 		switch(menuChoice) {
 		case 1:
+			viewAllFoodTrucks();
 			break;
 		case 2:
 			break;
 		case 3:
 			break;
 		case 4:
+			proceed = false;
 			break;
 		default:
 			break;
 		
 		}
+		
+		return proceed;
 	}
 }
