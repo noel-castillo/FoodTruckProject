@@ -7,6 +7,7 @@ public class FoodTruckApp {
 	public static void main(String[] args) {
 
 		Scanner keyboard = new Scanner(System.in);
+
 		FoodTruck app = new FoodTruck();
 		boolean proceed = false;
 

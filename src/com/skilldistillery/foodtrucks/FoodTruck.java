@@ -96,7 +96,7 @@ public class FoodTruck {
 		for (FoodTruck element : getFoodTrucks()) {
 			if (element != null) {
 				element.displayFoodTrucks();
-			} 
+			}
 		}
 	}
 
@@ -124,9 +124,9 @@ public class FoodTruck {
 		int counter = 0;
 		for (FoodTruck element : getFoodTrucks()) {
 			for (int c = 0; c < foodTruckNumber; c++) {
-				if(element != null) {
-				average += element.getRating();
-				counter++;
+				if (element != null) {
+					average += element.getRating();
+					counter++;
 				}
 			}
 		}
@@ -140,8 +140,8 @@ public class FoodTruck {
 		String bestTruck = "";
 		for (FoodTruck element : getFoodTrucks()) {
 			for (int c = 0; c < foodTruckNumber; c++) {
-				if(element != null) {
-					if(highest < element.getRating()) {
+				if (element != null) {
+					if (highest < element.getRating()) {
 						highest = element.getRating();
 						bestTruck = element.getName();
 					}
