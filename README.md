@@ -46,3 +46,5 @@ Separation of methods to respective classes. FoodTruck class has methods related
 
 Methods need to appropriately handle null inputs. The array used in this
 program can potentially have many null values.
+
+Added a new option to the menu and because of the design layout of super classes and subclasses which allowed implementing the new option to be much easier. With the layout adding more options to the menu will be much simpler.

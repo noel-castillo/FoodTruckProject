@@ -24,7 +24,8 @@ public class FoodTruckMenu extends FoodTruck {
 		System.out.println("1. List all existing food trucks or press enter to quit.");
 		System.out.println("2. See the average rating of food trucks.");
 		System.out.println("3. Display the highest-rated food truck.");
-		System.out.println("4. Quit the program.");
+		System.out.println("4. Search all trucks with a desired minimum rating");
+		System.out.println("5. Quit the program.");
 		int output = keyboard.nextInt();
 		return output;
 	}
@@ -59,6 +60,18 @@ public class FoodTruckMenu extends FoodTruck {
 		System.out.println(bestTruck + " with a rating of " + highestRating);
 
 	}
+	
+	public void searchMinimumRating(Scanner keyboard, FoodTruck[] foodTruck) {
+		
+		System.out.println("Enter minimum rating search: ");
+		int minimumRating = keyboard.nextInt();
+		keyboard.nextLine();
+			for (FoodTruck element : getFoodTrucks(foodTruck)) {
+				if (element != null && element.getRating() >= minimumRating) {
+					element.displayFoodTrucks();
+				}
+			}
+	}
 
 	public boolean displayMenuChoice(Scanner keyboard, FoodTruck[] foodTruck) {
 
@@ -76,6 +89,9 @@ public class FoodTruckMenu extends FoodTruck {
 				calculateHighestRating(foodTruck);
 				break;
 			case 4:
+				searchMinimumRating(keyboard, foodTruck);
+				break;
+			case 5:
 				proceed = false;
 				break;
 			default:
