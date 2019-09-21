@@ -18,7 +18,11 @@ Option 2 will list the average rating of all food truck ratings data entered.
 
 Option 3 will display the food truck name and rating for the food truck with the highest rating.
 
-Option 4 will quit the menu selection and proceed to the end of the program with a "Goodbye" message.
+Option 4 allows the user to search for food trucks within a specified minimum rating.
+
+Option 5 allows the user to search for food trucks with a specified food type.
+
+Option 6 will quit the menu selection and proceed to the end of the program with a "Goodbye" message.
 
 Any other value will display an error message and loop back to the menu options.
 
@@ -48,3 +52,5 @@ Methods need to appropriately handle null inputs. The array used in this
 program can potentially have many null values.
 
 Added a new option to the menu and because of the design layout of super classes and subclasses which allowed implementing the new option to be much easier. With the layout adding more options to the menu will be much simpler.
+
+Scanner needs to be cleared out when using nextLine otherwise it will not read input properly.
