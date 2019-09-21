@@ -18,6 +18,9 @@ public class FoodTruckApp {
 		} while(repeat.equals("r"));
 		
 		int menuChoice = app.displayMenu(keyboard);
+		app.displayMenuChoice(menuChoice);
+		
+		app.viewAllFoodTruck();
 
 		keyboard.close();
 	}
