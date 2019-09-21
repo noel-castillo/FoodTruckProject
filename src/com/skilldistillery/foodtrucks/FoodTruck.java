@@ -16,8 +16,6 @@ public class FoodTruck {
 
 	public int numberOfFoodTrucks;
 
-//	private FoodTruck[] foodTruck = new FoodTruck[numberOfFoodTrucks];
-
 //	C O N S T R U C T O R S
 
 	public FoodTruck() {
@@ -32,7 +30,6 @@ public class FoodTruck {
 	}
 
 //	M E T H O D S
-
 
 	public int getFoodTruckNumber() {
 		return foodTruckNumber;
@@ -92,17 +89,6 @@ public class FoodTruck {
 			return nextFoodTruck;
 		}
 	}
-	
-//	public boolean addFoodTruck(FoodTruck[] foodTruck) {
-//		boolean output = false;
-//		if (foodTruck != null) {
-//			foodTruck[foodTruckNumber] = foodTruck;
-//			foodTruckNumber++;
-//		} else {
-//			output = true;
-//		}
-//		return output;
-//	}
 
 	public FoodTruck[] getFoodTrucks(FoodTruck[] foodTruck) {
 		FoodTruck[] foodTruckCopy = new FoodTruck[numberOfFoodTrucks];
@@ -121,7 +107,8 @@ public class FoodTruck {
 	}
 
 	public String getFoodTruckData() {
-		String output = "Food Truck Number " + foodTruckNumber + " --- Name: " + name + ", Food Type: " + foodType + ", Rating: " + rating;
+		String output = "Food Truck Number " + foodTruckNumber + " --- Name: " + name + ", Food Type: " + foodType
+				+ ", Rating: " + rating;
 		return output;
 	}
 
