@@ -14,39 +14,40 @@ public class FoodTruck {
 
 	private int foodTruckNumber = 0;
 
-	private int numberOfFoodTrucks = 5;
+	public int numberOfFoodTrucks;
 
-	private FoodTruck[] foodTruck = new FoodTruck[numberOfFoodTrucks];
+//	private FoodTruck[] foodTruck = new FoodTruck[numberOfFoodTrucks];
 
 //	C O N S T R U C T O R S
 
 	public FoodTruck() {
 	}
 
-	public FoodTruck(String name, String foodType, double rating) {
+	public FoodTruck(String name, String foodType, double rating, int foodTruckNumber) {
 
 		setName(name);
 		setFoodType(foodType);
 		setRating(rating);
+		setFoodTruckNumber(foodTruckNumber);
 	}
 
 //	M E T H O D S
 
-	public FoodTruck getFoodTruckInfo(Scanner keyboard) {
-		System.out.println("Enter food truck data or enter quit to proceed:");
-		System.out.print("Food truck name:");
-		String name = keyboard.nextLine();
-		if (name.equals("quit")) {
-			return null;
-		} else {
-			System.out.print("Food type:");
-			String foodType = keyboard.nextLine();
-			System.out.print("Food truck rating:");
-			double rating = keyboard.nextDouble();
-			keyboard.nextLine();
-			FoodTruck nextFoodTruck = new FoodTruck(name, foodType, rating);
-			return nextFoodTruck;
-		}
+
+	public int getFoodTruckNumber() {
+		return foodTruckNumber;
+	}
+
+	public void setFoodTruckNumber(int foodTruckNumber) {
+		this.foodTruckNumber = foodTruckNumber;
+	}
+
+	public int getNumberOfFoodTrucks() {
+		return numberOfFoodTrucks;
+	}
+
+	public void setNumberOfFoodTrucks(int numberOfFoodTrucks) {
+		this.numberOfFoodTrucks = numberOfFoodTrucks;
 	}
 
 	public String getName() {
@@ -73,18 +74,37 @@ public class FoodTruck {
 		this.rating = rating;
 	}
 
-	public boolean addFoodTruck(FoodTruck nextFoodTruck) {
-		boolean output = false;
-		if (nextFoodTruck != null) {
-			this.foodTruck[foodTruckNumber] = nextFoodTruck;
+	public FoodTruck getFoodTruckInfo(Scanner keyboard) {
+		System.out.println("Enter food truck data or enter quit to proceed:");
+		System.out.print("Food truck name:");
+		String name = keyboard.nextLine();
+		if (name.equals("quit")) {
 			foodTruckNumber++;
+			return null;
 		} else {
-			output = true;
+			System.out.print("Food type:");
+			String foodType = keyboard.nextLine();
+			System.out.print("Food truck rating:");
+			double rating = keyboard.nextDouble();
+			keyboard.nextLine();
+			FoodTruck nextFoodTruck = new FoodTruck(name, foodType, rating, getFoodTruckNumber());
+			foodTruckNumber++;
+			return nextFoodTruck;
 		}
-		return output;
 	}
+	
+//	public boolean addFoodTruck(FoodTruck[] foodTruck) {
+//		boolean output = false;
+//		if (foodTruck != null) {
+//			foodTruck[foodTruckNumber] = foodTruck;
+//			foodTruckNumber++;
+//		} else {
+//			output = true;
+//		}
+//		return output;
+//	}
 
-	public FoodTruck[] getFoodTrucks() {
+	public FoodTruck[] getFoodTrucks(FoodTruck[] foodTruck) {
 		FoodTruck[] foodTruckCopy = new FoodTruck[numberOfFoodTrucks];
 		for (int c = 0; c < foodTruck.length; c++) {
 			foodTruckCopy[c] = foodTruck[c];
@@ -92,8 +112,8 @@ public class FoodTruck {
 		return foodTruckCopy;
 	}
 
-	public void viewAllFoodTrucks() {
-		for (FoodTruck element : getFoodTrucks()) {
+	public void viewAllFoodTrucks(FoodTruck[] foodTruck) {
+		for (FoodTruck element : getFoodTrucks(foodTruck)) {
 			if (element != null) {
 				element.displayFoodTrucks();
 			}
@@ -101,7 +121,7 @@ public class FoodTruck {
 	}
 
 	public String getFoodTruckData() {
-		String output = "Food Truck Name: " + name + ", Food Type: " + foodType + ", Rating: " + rating;
+		String output = "Food Truck Number " + foodTruckNumber + " --- Name: " + name + ", Food Type: " + foodType + ", Rating: " + rating;
 		return output;
 	}
 
@@ -110,69 +130,4 @@ public class FoodTruck {
 		System.out.println(foodTruckData);
 	}
 
-	public int displayMenu(Scanner keyboard) {
-		System.out.println("1. List all existing food trucks or press enter to quit.");
-		System.out.println("2. See the average rating of food trucks.");
-		System.out.println("3. Display the highest-rated food truck.");
-		System.out.println("4. Quit the program.");
-		int output = keyboard.nextInt();
-		return output;
-	}
-
-	public void calculateAverageRating() {
-		double average = 0.0;
-		int counter = 0;
-		for (FoodTruck element : getFoodTrucks()) {
-			for (int c = 0; c < foodTruckNumber; c++) {
-				if (element != null) {
-					average += element.getRating();
-					counter++;
-				}
-			}
-		}
-		average /= counter;
-		System.out.print("Average Rating: ");
-		System.out.printf("%4.2f%n", average);
-	}
-
-	public void calculateHighestRating() {
-		double highest = 0.0;
-		String bestTruck = "";
-		for (FoodTruck element : getFoodTrucks()) {
-			for (int c = 0; c < foodTruckNumber; c++) {
-				if (element != null) {
-					if (highest < element.getRating()) {
-						highest = element.getRating();
-						bestTruck = element.getName();
-					}
-				}
-			}
-		}
-		System.out.println(bestTruck + " with a rating of " + highest);
-
-	}
-
-	public boolean displayMenuChoice(int menuChoice) {
-		boolean proceed = true;
-		switch (menuChoice) {
-		case 1:
-			viewAllFoodTrucks();
-			break;
-		case 2:
-			calculateAverageRating();
-			break;
-		case 3:
-			calculateHighestRating();
-			break;
-		case 4:
-			proceed = false;
-			break;
-		default:
-			System.out.println("Not an option.");
-			break;
-
-		}
-
-		return proceed;
-	}
 }
