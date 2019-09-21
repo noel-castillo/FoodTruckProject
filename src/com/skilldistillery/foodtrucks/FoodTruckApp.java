@@ -14,8 +14,6 @@ public class FoodTruckApp {
 		keyboard.nextLine();
 		FoodTruck[] foodTruck = new FoodTruck[app.numberOfFoodTrucks];
 
-		boolean proceed = false;
-
 		while (app.getFoodTruckNumber() < app.getNumberOfFoodTrucks()) {
 			foodTruck[app.getFoodTruckNumber()] = app.getFoodTruckInfo(keyboard);
 			if (foodTruck[app.getFoodTruckNumber() - 1] == null) {
@@ -23,10 +21,7 @@ public class FoodTruckApp {
 			}
 		}
 
-		do {
-			int menuChoice = app.displayMenu(keyboard);
-			proceed = app.displayMenuChoice(menuChoice, foodTruck);
-		} while (proceed);
+		app.displayMenuChoice(keyboard, foodTruck);
 
 		System.out.println("Goodbye.");
 

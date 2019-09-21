@@ -4,9 +4,11 @@
 
 ### Overview
 
-User will be allowed to enter data for a total of 5 food trucks to include food truck name, food type, and rating.
+User will be prompted regarding how many food trucks they wish to enter.
 
-User can enter quit for the food truck name if there is no more food trucks to input.
+User will be able to input data for a food truck and the program will continue to the next phase once they have inputted an amount according to the number of food trucks specified.
+
+User can enter quit for the food truck name if there is no more food trucks to input even if they haven't inputted an amount equal to their initial prompt.
 
 Program will display a menu with options from which the user can select from.
 
@@ -24,9 +26,6 @@ Any other value will display an error message and loop back to the menu options.
 
 Constructors to be used in loops to allow for the creation of multiple class objects in a feasible manner.
 
-do-while loops to run through the iteration once and allow the user to exit
-at their discretion.
-
 Instantiate an object in order to run methods of a class.
 
 getters and setters to use private field variables.
@@ -42,6 +41,8 @@ null exceptions included in methods in order to avoid errors when trying to do
 something with a null value.
 
 ### Lessons Learned
+
+Separation of methods to respective classes. FoodTruck class has methods related only to Food Trucks. FoodTruckMenu class has methods related only to menu options for Food Trucks. This makes it easier to comprehend and read the program as a whole.
 
 Methods need to appropriately handle null inputs. The array used in this
 program can potentially have many null values.
